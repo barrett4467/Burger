@@ -1,6 +1,28 @@
-var connection = require("./connection");
+var connection = require("../config/connection");
 
-var Burger = {
+function objToSql(ob) {
+    var arr = [];
+  
+    // loop through the keys and push the key/value as a string int arr
+    for (var key in ob) {
+      var value = ob[key];
+      // check to skip hidden properties
+      if (Object.hasOwnProperty.call(ob, key)) {
+        // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+        if (typeof value === "string" && value.indexOf(" ") >= 0) {
+          value = "'" + value + "'";
+        }
+        // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+        // e.g. {sleepy: true} => ["sleepy=true"]
+        arr.push(key + "=" + value);
+      }
+    }
+  
+    // translate array of strings to a single comma-separated string
+    return arr.toString();
+  }
+
+var orm = {
 
     //select all()
     all: function(tableName, cb){
@@ -25,8 +47,9 @@ var Burger = {
     //updateOne()
     update: function(table, change, id, cb){
         //UPDATE burgers SET {devoured: true} WHERE id = id 
+        console.log(change);
         
-        var queryString = `UPDATE ${table} SET {devoured = ${change}} WHERE id = ${id}`
+        var queryString = "UPDATE " + table + " SET devoured = " + objToSql(change) + " WHERE " + id;
 
         connection.query(queryString, function(err, data){
             if(err) throw err;
@@ -36,4 +59,4 @@ var Burger = {
 }
 
 //export
-module.exports = Burger;
+module.exports = orm;

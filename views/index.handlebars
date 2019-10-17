@@ -1,3 +1,19 @@
 {{!-- has template for handlebars to render to --}}
-
+<h1>Burgers</h1>
+<h2>Burgers yet to be eaten</h2>
+<ul>
+    {{#each burgers}}
+        {{#unless devoured}}
+            {{> burgers/burger-block devoured=false}}
+        {{/unless}} 
+    {{/each}}
+</ul>
+<h2>Burgers that have been devoured</h2>
+<ul>
+    {{#each burgers}}
+        {{#if devoured}}
+            {{> burgers/burger-block devoured=true}}
+        {{/if}}
+    {{/each}}
+</ul>
 {{!-- button to submit info --}}
