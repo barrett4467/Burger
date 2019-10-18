@@ -16,4 +16,14 @@
         {{/if}}
     {{/each}}
 </ul>
+
+<h2>Add a new burger</h2>
+<form>
+    <label for="name">Burger Name:</label>
+    <input id="name" type="text">
+    <fieldset id="devoured">
+        <input type="radio" value="devoured" name="isEaten" checked>Devoured<input type="radio" value="notDevoured" name="isEaten">Not Devoured
+    </fieldset>
+    <button type="submit" id="newBurger">submit</button>
+</form>
 {{!-- button to submit info --}}
