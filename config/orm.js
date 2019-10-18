@@ -43,8 +43,8 @@ var orm = {
 
     if (values[1] === "devoured") {
       values[1] = 0;
-      console.log("values 1");
-      console.log(values[1]);
+    } else {
+      values[1] = 1;
     }
 
     var queryString = `INSERT INTO ${table} (${columns[0].toString()}, ${columns[1].toString()})

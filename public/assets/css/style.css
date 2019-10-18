@@ -1,0 +1,35 @@
+body {
+    background-image: url(../img/burger.jpg);
+}
+
+.container {
+    background-color: #fff;
+    width: 75%;
+    margin: 0px auto;
+    border: 2px solid black;
+    padding: 20px;
+}
+.toggle-devoured {
+    background-image: url(../img/burgerButton.png);
+    height: 130px;
+    width: 152px;
+    border: 2px solid black;
+    margin: 10px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    white-space: normal;
+    line-height: 22px;
+    font-size: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+#burger-name {
+    position: relative;
+}
+#title {
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin: 0 36px;
+}
